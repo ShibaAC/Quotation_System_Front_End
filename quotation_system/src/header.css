@@ -3,3 +3,12 @@
     height: 120px;
     background-color: lightblue;
 }
+.profile{
+    display: inline-block;
+    
+}
+.profile-photo{
+    width: 80px;
+    height: 80px;
+    
+}
