@@ -12,7 +12,6 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import ListIcon from '@mui/icons-material/List';
 
-
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
 
@@ -21,7 +20,7 @@ export default function TemporaryDrawer() {
   };
 
   const DrawerList = (
-    <Box sx={{ width: 300 }} role="" >
+    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} onMouseLeave={toggleDrawer(false)}>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -52,33 +51,26 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
+      <div
+        style={{
+          position: 'fixed',
+          height: '100vh',
+          width: '10px',
+          top: 0,
+          left: 0,
+          backgroundColor: 'transparent',
+          zIndex: 1300, 
+        }}
+        onMouseEnter={toggleDrawer(true)}
+      />
       <Button onClick={toggleDrawer(true)}>
-        <ListIcon style={{ color: 'white', fontSize: '70', marginLeft: 'auto' }} />
+        <ListIcon style={{ color: 'white', fontSize: 70, marginLeft: 'auto' }} />
       </Button>
-      <Drawer
-        open={open}
-        // onClose={toggleDrawer(false)}
-        PaperProps={{
-          style: {
-            top: 64, // Adjust this value according to your Navbar height
-            height: 'calc(100% - 64px)', // Adjust the height to fit the remaining space
-            overflowY: 'auto', // Enable scrolling if content overflows
-          },
-        }}
-        BackdropProps={{
-          style: {
-            display: 'none', // Hide the backdrop to remove the overlay effect
-          },
-        }}
-        sx={{
-          '& .MuiDrawer-paper': {
-            top: 80, // Ensure drawer top aligns with Navbar bottom
-            height: 'calc(100% - 80px)', // Height adjustment
-          }
-        }}
-      >
+      <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
     </div>
+
+    
   );
 }
