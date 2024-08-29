@@ -44,7 +44,7 @@ function ResponsiveAppBar() {
       <Container maxWidth="2xl">
         {/* 排版:去掉左右內邊距 */}
         <Toolbar maxWidth="2xl">
-          <Sidebar sty></Sidebar>
+          <Sidebar/>
         {/* LOGO */}
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
