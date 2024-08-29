@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Header from './Header';
 import reportWebVitals from './reportWebVitals';
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar' 
+import Navbar from './Navbar'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     
-    <Header />
-    <Sidebar />
+    <Navbar/>
+    
   </React.StrictMode>
 );
 
