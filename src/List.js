@@ -1,57 +1,39 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import FolderIcon from '@mui/icons-material/Folder';
-import DeleteIcon from '@mui/icons-material/Delete';
-
-function generate(element) {
-  return [0, 1, 2].map((value) =>
-    React.cloneElement(element, {
-      key: value,
-    }),
-  );
-}
-
-const Demo = styled('div')(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-}));
+import React from 'react';
+import { Box, Button, Typography } from '@mui/material';
+import useTabs from './useTabs'; // 假设 useTabs 是你自己定义的一个 Hook
 
 export default function InteractiveList() {
-  const [dense, setDense] = React.useState(false);
-  
+  const [tabs, tabDispatch] = useTabs();
+  const isEmpty = tabs.storedTabs.length === 0;
+
+  // 示例数据
+  const data = [
+    {
+      id: "1",
+      no: "ORD12345",
+      total: 1500,
+    },
+    {
+      id: "2",
+      no: "ORD12346",
+      total: 2000,
+    },
+  ];
 
   return (
-    <Box sx={{ flexGrow: 0, maxWidth: 752 }}>
-        
-          <Demo>
-            <List dense={dense}>
-              {generate(
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <FolderIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary="新增商品"
-                    
-                  />
-                </ListItem>,
-              )}
-            </List>
-          </Demo>
+    <Box>
+      {data.map((order) => (
+        <Button
+          key={order.id}
+          variant="outlined"
+          onClick={() => tabDispatch('ADD', { id: order.id, no: order.no })}
+        >
+          <Box display="flex" justifyContent="space-between" width="100%">
+            <Typography>{order.no}</Typography>
+            <Typography>$ {order.total}</Typography>
+          </Box>
+        </Button>
+      ))}
     </Box>
   );
 }

@@ -68,7 +68,7 @@ function ResponsiveAppBar() {
 
           
           <Box sx={{ml: 'auto' }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="">
               <IconButton onClick={handleOpenUserMenu}>
                 <Avatar alt="" src="/static/images/avatar/2.jpg" />
                 

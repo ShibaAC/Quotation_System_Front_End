@@ -21,7 +21,7 @@ export default function TemporaryDrawer() {
       
     >
       <Accordion>
-        <List onClick={() => {toggleDrawer(false); console.log('覽趴')}}>
+        <List onClick={() => {toggleDrawer(false);}}>
         </List>
       </Accordion>
     </Box>
