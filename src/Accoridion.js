@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import  List  from './List';
 
-export default function ControlledAccordions() {
+export default function ControlledAccordions({ children, onItemClick }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -28,7 +28,9 @@ export default function ControlledAccordions() {
           
         </AccordionSummary>
         <AccordionDetails>
-          <List/>
+        {React.Children.map(children, child =>
+            React.cloneElement(child, { onItemClick })
+          )}
         </AccordionDetails>
       </Accordion>
       

@@ -51,8 +51,9 @@ function useTabs() {
     (type, payload) => dispatch({ type, payload }),
     []
   );
-  // console.log('覽趴1')
   return [state, tabDispatch];
 }
+
+
 
 export default useTabs;

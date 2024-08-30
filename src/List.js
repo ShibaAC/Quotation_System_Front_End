@@ -1,12 +1,8 @@
 import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
-import useTabs from './useTabs'; // 假设 useTabs 是你自己定义的一个 Hook
 
-export default function InteractiveList() {
-  const [tabs, tabDispatch] = useTabs();
-  const isEmpty = tabs.storedTabs.length === 0;
-
-  // 示例数据
+export default function InteractiveList({ onItemClick }) {
+  // Example data
   const data = [
     {
       id: "1",
@@ -26,7 +22,7 @@ export default function InteractiveList() {
         <Button
           key={order.id}
           variant="outlined"
-          onClick={() => tabDispatch('ADD', { id: order.id, no: order.no })}
+          onClick={() => onItemClick && onItemClick(order.id)}
         >
           <Box display="flex" justifyContent="space-between" width="100%">
             <Typography>{order.no}</Typography>
